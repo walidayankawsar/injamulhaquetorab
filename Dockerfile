@@ -25,7 +25,8 @@ EXPOSE 8000
 
 
 # Run with gunicorn (better for production)
-CMD ["gunicorn", "Portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+#CMD ["gunicorn", "Portfolio.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "injamulhaquetorab.wsgi:application", "--bind", "0.0.0.0:$PORT"]
 
 
 
