@@ -1,0 +1,68 @@
+.post{
+    width: 70% !important;
+    margin: 2rem auto;
+}
+.postImage{
+    width: 100%;
+    aspect-ratio: 16/10;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    padding: 4px 15px;
+    background-color: rgba(52, 253, 253, 0.597);
+    border-radius: 7px;
+    white-space: nowrap; 
+}
+
+/* Tag container flex layout */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+@media (max-width: 640px) {
+    .post{
+        width: 95% !important;
+        margin: 10px auto;
+    }
+    .postImage{
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+
+
+
+
+.project-links a {
+    padding: 8px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: large;
+    display: inline-block;
+    margin-right: 10px;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+/* GitHub button */
+.github-btn {
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+.github-btn:hover {
+    background-color: #008bf8;
+}
+
+/* Website button */
+.website-btn {
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+.website-btn:hover {
+    background-color: #008bf8;
+}
