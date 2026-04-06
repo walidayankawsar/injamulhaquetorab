@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 ALLOWED_HOSTS = ['192.168.0.107', '192.168.0.107:8080', 'localhost:8080',
-                 '0.0.0.0:8080', '127.0.0.1:8000', '127.0.0.1', 'injamulhaquetorab.onrender.com']
+                 '0.0.0.0:8080', '127.0.0.1:8000', '127.0.0.1', 'walidayankawsar.onrender.com']
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -164,13 +164,12 @@ env.read_env(BASE_DIR / ".env")
 SECRET_KEY = env("SECRET_KEY", default="fallback-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = env("DEBUG")
-DEBUG = env.bool('DEBUG', default=False)
+DEBUG = env("DEBUG")
 
 
 # send message to mail
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env('EMAIL_HOST', default='localhost')
+EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
