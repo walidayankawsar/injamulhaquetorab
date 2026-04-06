@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = ['192.168.0.107', '127.0.0.1',
-                 'localhost:8080', 'injamulhaquetorab.onrender.com' '*']
+ALLOWED_HOSTS = ['192.168.0.107', '127.0.0.1', 'injamulhaquetorab.onrender.com'
+                 'localhost:8080', '*']
 
 
 CSRF_TRUSTED_ORIGINS = [
