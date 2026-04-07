@@ -22,14 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 
-ALLOWED_HOSTS = ['192.168.0.107', '127.0.0.1', 'injamulhaquetorab.onrender.com'
-                 'localhost:8080', '*']
+ALLOWED_HOSTS = ['192.168.0.107', '127.0.0.1', 'injamulhaquetorab.onrender.com',
+                 'localhost', '127.0.0.1', '.onrender.com', '*']
 
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
     "http://192.168.0.107:8080",
     "http://0.0.0.0:8080",
+    "https://injamulhaquetorab.onrender.com",
+    "https://*.onrender.com",
 ]
 
 # for nginx
@@ -50,14 +52,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Must be right after SecurityMiddleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 
@@ -134,6 +135,15 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
+# WhiteNoise configuration for serving static files in production
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/'media'
@@ -164,7 +174,7 @@ env.read_env(BASE_DIR / ".env")
 SECRET_KEY = env("SECRET_KEY", default="fallback-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG", default=['*'])
+DEBUG = env.bool("DEBUG", default=False)
 
 
 # send message to mail
